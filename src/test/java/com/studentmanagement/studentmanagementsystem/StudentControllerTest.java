@@ -5,13 +5,15 @@
  */
 package com.studentmanagement.studentmanagementsystem;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.JsonPath;
-import com.studentmanagement.controller.create.StudentCreationController;
-import com.studentmanagement.entity.Student;
-import com.studentmanagement.presentation.Response;
-import com.studentmanagement.service.StudentService;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,32 +27,23 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.io.UnsupportedEncodingException;
-import java.time.LocalDate;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
+import com.studentmanagement.entity.Student;
+import com.studentmanagement.presentation.Response;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class StudentCreationControllerTest {
+public class StudentControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    @Autowired
-    private StudentService studentService;
-
-    @Autowired
-    private StudentCreationController studentCreationController;
 
     @Test
     public void test_getAllStudents() throws Exception
