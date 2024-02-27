@@ -77,6 +77,7 @@ and expressive code when creating response objects, making it easier to understa
 - Java 17 is required to run the application
 - Git clone
 - mvn clean install
+- Make sure you have lombok in Eclipse IDE or you can use IntelliJ
 - navigate to the main, Run as Java application
 - application starts with the default port : 8080
 
