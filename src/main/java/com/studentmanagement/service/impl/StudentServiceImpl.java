@@ -65,10 +65,9 @@ public class StudentServiceImpl implements StudentService {
 	public Response update(final long studentId,final StudentDTO studentDTO) {
 		studentDTO.setId(studentId);
 		var currentStudent = this.findStudentById(studentId);
-		Student toUpdateStudent = studentMapper.dtoToEntity(studentDTO);
-		toUpdateStudent.setId(currentStudent.getId());
+		currentStudent = studentMapper.dtoToEntity(studentDTO);
 		return new ResponseBuilder().message(AppConstant.SUCCESS)
-				.data(studentMapper.entityToDTO(studentRepository.save(toUpdateStudent))).build();
+				.data(studentMapper.entityToDTO(studentRepository.save(currentStudent))).build();
 	}
 
 	@Override
