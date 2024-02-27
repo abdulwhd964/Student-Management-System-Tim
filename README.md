@@ -8,7 +8,7 @@ This repository contains the source code for Student Management System. where st
 
 - **Create:** Creating an student : http://localhost:8080/api/students , Method: POST
 - **Update:** Updating an student : http://localhost:8080/api/students/1 , Method: PUT
-- **Read All:** Get All student : http://localhost:8080/api/students , Method: GET
+- **Read All Student:** Get All student : http://localhost:8080/api/students , Method: GET
 - **Read Student:** Get student by id: http://localhost:8080/api/students/1 , Method: GET
 - **Delete Student:** Delete Student by id : http://localhost:8080/api/students/1 , Method: Delete 
 
@@ -35,7 +35,7 @@ This repository contains the source code for Student Management System. where st
 
 ### 6. JWT Token
 
-- Jwt token is handled to authenticate the user to access the resource
+- Jwt token is handled to authenticate the user to access the resource.
 
 ### 7. Integrated with React
 
