@@ -33,17 +33,21 @@ import com.jayway.jsonpath.JsonPath;
 import com.studentmanagement.entity.Student;
 import com.studentmanagement.presentation.Response;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class StudentControllerTest {
 
     @Autowired
-    private MockMvc mvc;
+    MockMvc mvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    ObjectMapper objectMapper;
 
     @Test
     public void test_getAllStudents() throws Exception
@@ -64,7 +68,7 @@ public class StudentControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
 
-        Student student = convertResponseToStudent(resultActions);
+        Student student = convertResultActionsToStudent(resultActions);
 
         assertAll(
                 () -> assertNotNull(student),
@@ -73,7 +77,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void testSaveStudent() throws Exception {
+    public void test_saveStudent() throws Exception {
         Student mockStudent = new Student(1L,"abdul@gmail.com","abdul",15,LocalDate.of(2008,5,12));
         // Performing the POST request
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.post("/students")
@@ -81,7 +85,7 @@ public class StudentControllerTest {
                         .content(objectMapper.writeValueAsString(mockStudent)))
                 .andExpect(MockMvcResultMatchers.status().isCreated());
 
-        Student student = convertResponseToStudent(resultActions);
+        Student student = convertResultActionsToStudent(resultActions);
 
         assertAll(
                 () -> assertNotNull(student),
@@ -91,7 +95,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void test_create_shouldNotCreateSuccessfullyForAge() throws Exception {
+    public void test_createShouldNotCreateSuccessfullyForAge() throws Exception {
         Student mockStudent = new Student(1L,"abdul@gmail.com","abdul",10,LocalDate.of(2008,5,12));
         // Performing the POST request
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.post("/students")
@@ -106,7 +110,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void test_create_shouldNotCreateSuccessfullyForDateOfBirth() throws Exception {
+    public void test_createShouldNotCreateSuccessfullyForDateOfBirth() throws Exception {
         Student mockStudent = new Student(1L,"abdul@gmail.com","abdul",16,null);
         // Performing the POST request
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.post("/students")
@@ -121,7 +125,7 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void testUpdateStudent_ByEmail() throws Exception {
+    public void test_updateStudentByEmail() throws Exception {
         // Mocking the service response
         Student mockStudent = new Student(1L,"abdulUpdate@gmail.com","abdul",15,LocalDate.of(2008,5,12));
 
@@ -134,7 +138,7 @@ public class StudentControllerTest {
                         .content(requestBody))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
-        Student student =convertResponseToStudent(resultActions);
+        Student student =convertResultActionsToStudent(resultActions);
 
         assertAll(
                 () -> assertNotNull(student),
@@ -145,13 +149,13 @@ public class StudentControllerTest {
     }
 
     @Test
-    public void testDeleteStudent() throws Exception {
+    public void test_deleteStudent() throws Exception {
         // Performing the DELETE request
         mvc.perform(MockMvcRequestBuilders.delete("/students/1"))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
-    private Student convertResponseToStudent(ResultActions resultActions) throws UnsupportedEncodingException, JsonProcessingException {
+    private Student convertResultActionsToStudent(ResultActions resultActions) throws UnsupportedEncodingException, JsonProcessingException {
         return objectMapper.readValue(objectMapper.writeValueAsString
                 (objectMapper.readValue(resultActions.andReturn().getResponse().getContentAsString(), Response.class)
                         .getData()), Student.class);
