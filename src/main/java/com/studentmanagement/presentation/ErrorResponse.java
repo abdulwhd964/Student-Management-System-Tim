@@ -4,13 +4,16 @@
  */
 package com.studentmanagement.presentation;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.FieldDefaults;
 
 @ToString
 @Data
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ErrorResponse {
-	private String message;
+	String message;
 }

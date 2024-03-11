@@ -20,12 +20,12 @@ import lombok.experimental.FieldDefaults;
 
 @AllArgsConstructor
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class UserService {
 
-	final UserRepository userRepository;
+	UserRepository userRepository;
 
-	final JwtTokenUtil jwtTokenUtil;
+	JwtTokenUtil jwtTokenUtil;
 
 	public Response validate(final UserDTO userDTO) {
 		validateUsername(userDTO.getUserName());

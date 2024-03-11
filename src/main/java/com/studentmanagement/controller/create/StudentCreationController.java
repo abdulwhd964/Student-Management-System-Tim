@@ -29,11 +29,11 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/students")
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 @Slf4j
 public class StudentCreationController {
 
-    final StudentService studentService;
+    StudentService studentService;
 
     /**
      * save student

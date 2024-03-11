@@ -5,10 +5,14 @@
  */
 package com.studentmanagement.presentation;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class Response {
 
-    private final String message;
-    private final Object data;
+    String message;
+    Object data;
 
     public Response(String message, Object data) {
         this.message = message;

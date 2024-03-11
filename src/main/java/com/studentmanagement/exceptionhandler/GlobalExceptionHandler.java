@@ -10,6 +10,8 @@ import com.studentmanagement.exception.UserAuthenticationException;
 import com.studentmanagement.presentation.ErrorResponse;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -25,9 +27,10 @@ import java.util.StringJoiner;
 
 @RestControllerAdvice
 @Slf4j
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class GlobalExceptionHandler {
 
-	private static final String SPACE = " ";
+	static String SPACE = " ";
 
 	@ExceptionHandler(value = StudentNotFoundException.class)
 	ResponseEntity<ErrorResponse> handleStudentNotFoundException(final StudentNotFoundException exception) {

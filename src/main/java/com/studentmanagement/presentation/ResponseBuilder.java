@@ -1,13 +1,16 @@
 package com.studentmanagement.presentation;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 /*
  * Author: Abdul Wahid
  * Date:   23 Feb 2024
  */
-
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ResponseBuilder {
-	private String message;
-	private Object data;
+	String message;
+	Object data;
 
 	public ResponseBuilder message(String message) {
 		this.message = message;

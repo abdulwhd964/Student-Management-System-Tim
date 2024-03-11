@@ -14,10 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Aspect
 @Slf4j
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class LoggingAspect {
 
-	static final long START_TIME = System.currentTimeMillis();
+	static long START_TIME = System.currentTimeMillis();
 
 	@Pointcut("execution(* com.studentmanagement.controller.*.*(..)) || execution(* com.studentmanagement.service.impl.*.*(..))")
 	public void apiMethods() {

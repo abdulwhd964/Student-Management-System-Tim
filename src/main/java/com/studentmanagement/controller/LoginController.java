@@ -26,11 +26,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @RestController
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 @Slf4j
 public class LoginController {
 
-    final UserService userService;
+    UserService userService;
 
     @Tag(name = "Login")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Success"),

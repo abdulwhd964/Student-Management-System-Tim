@@ -27,10 +27,11 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/students")
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 @Slf4j
 public class StudentDeletionController {
-    final StudentService studentService;
+    
+	StudentService studentService;
 
     /**
      * delete student

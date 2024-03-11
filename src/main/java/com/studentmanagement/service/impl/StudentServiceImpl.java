@@ -31,11 +31,11 @@ import lombok.experimental.FieldDefaults;
 
 @Service
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class StudentServiceImpl implements StudentService {
 
-	final StudentRepository studentRepository;
-	final StudentMapper studentMapper;
+	StudentRepository studentRepository;
+	StudentMapper studentMapper;
 
 	@Override
 	@Cacheable("student")
