@@ -1,3 +1,11 @@
+# Use Maven image as a builder
+FROM maven:3.8.4-openjdk-17 AS builder
+
+# Copy the Maven project and build it
+WORKDIR /app
+COPY . .
+RUN mvn clean install
+
 FROM openjdk:17
 
 VOLUME /tmp
