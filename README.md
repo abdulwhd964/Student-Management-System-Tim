@@ -77,9 +77,9 @@ and expressive code when creating response objects, making it easier to understa
 
 - cd your-project-directory
   - Build Docker Image: Navigate to the project directory and build the Docker image using the provided Dockerfile. <br>
-    docker build -t docker buildx build -t student-management-tim .
+      docker build -t docker buildx build -t student-management-tim .
   - Run Docker Container: Once the image is built, you can run it using Docker.<br>
-    docker run -p 8080:8080 student-management-tim .
+      docker run -p 8080:8080 student-management-tim .
 
 ### 16. Render Deployment
 - This application has been deployed with Render using Docker Image, you can access this application via https://student-management-system-tim-2-dw1u.onrender.com/api/swagger-ui/index.html
