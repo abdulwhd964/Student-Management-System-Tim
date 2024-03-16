@@ -73,6 +73,9 @@ and expressive code when creating response objects, making it easier to understa
 - username: sa
 - password: password
 
+### 15. Render Deployment
+- This application has been with Render, you can use the application via https://student-management-system-tim-2-dw1u.onrender.com/api/swagger-ui/index.html
+
 ## Setup
 
 - Java 17 is required to run the application
