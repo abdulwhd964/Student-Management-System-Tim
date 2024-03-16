@@ -24,6 +24,7 @@ This repository contains the source code for Student Management System. where st
 - Logger has been handled by SLF4J and also implemenented ELK Stack to view the logs
 - logstash.conf is available able under resource folder
 - Use this: if you have ELK Setup : Kibana URL: http://localhost:5601
+- Kibana Logs Image ![Alt text](https://github-production-user-asset-6210df.s3.amazonaws.com/61117499/313422562-44b4712a-5e44-435e-99cc-5dd1be71d6ef.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240316%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240316T180519Z&X-Amz-Expires=300&X-Amz-Signature=3795d5f81df33eff92acadc12da26cd69f592fdd7d7ca052fb125af047790335&X-Amz-SignedHeaders=host&actor_id=61117499&key_id=0&repo_id=764009502)
 
 ### 4. Transactional
 
