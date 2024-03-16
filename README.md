@@ -76,9 +76,9 @@ and expressive code when creating response objects, making it easier to understa
 ### 15. Deployment with Docker
 
 - cd your-project-directory
-  - Build Docker Image: Navigate to the project directory and build the Docker image using the provided Dockerfile.
+  - Build Docker Image: Navigate to the project directory and build the Docker image using the provided Dockerfile. <br>
     docker build -t docker buildx build -t student-management-tim .
-  - Run Docker Container: Once the image is built, you can run it using Docker.
+  - Run Docker Container: Once the image is built, you can run it using Docker.<br>
     docker run -p 8080:8080 student-management-tim .
 
 ### 16. Render Deployment
