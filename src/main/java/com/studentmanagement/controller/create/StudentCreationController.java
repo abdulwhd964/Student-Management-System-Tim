@@ -42,6 +42,7 @@ public class StudentCreationController {
     @Tag(name = "Create student")
     @ApiResponses(value = {@ApiResponse(responseCode = "201", description = "Ok"),
             @ApiResponse(responseCode = "400", description = "Validation Error"),
+            @ApiResponse(responseCode = "401", description = "If JWTEnabled and No JWTToken, JWT Token Expired Error"),
             @ApiResponse(responseCode = "500", description = "Server Error")})
     @Operation(summary = "create student")
     @PostMapping

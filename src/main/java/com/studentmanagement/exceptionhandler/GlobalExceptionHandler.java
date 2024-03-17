@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = UserAuthenticationException.class)
 	ResponseEntity<ErrorResponse> handleUserAuthenticationException(final UserAuthenticationException exception) {
 		log.error("An error occurred: {}", exception.getMessage(), exception);
-		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.UNAUTHORIZED);
 	}
 
 	@ExceptionHandler(value = UserAndPasswordNotFoundException.class)

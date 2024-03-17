@@ -38,6 +38,7 @@ public class StudentReadController {
      */
     @Tag(name = "Get All students")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Success"),
+            @ApiResponse(responseCode = "401", description = "If JWTEnabled and No JWTToken, JWT Token Expired Error"),
             @ApiResponse(responseCode = "500", description = "Server Error")})
     @Operation(summary = "get all students", description = "Getting all students")
     @GetMapping

@@ -41,6 +41,7 @@ public class StudentDeletionController {
     @Operation(summary = "delete student", description = "Student must exist")
     @ApiResponses(value = {@ApiResponse(responseCode = "204", description = "delete student by Id"),
             @ApiResponse(responseCode = "404", description = "Student not found"),
+            @ApiResponse(responseCode = "401", description = "If JWTEnabled and No JWTToken, JWT Token Expired Error"),
             @ApiResponse(responseCode = "500", description = "Server Error")})
     @DeleteMapping("{studentId}")
     public ResponseEntity<Response> deleteStudent(@PathVariable long studentId) {
