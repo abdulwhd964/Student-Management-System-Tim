@@ -68,8 +68,8 @@ public class Appconfiguration implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new GlobalInterceptors(isJwtTokenEnable, getJwtTokenUtil(), jwtUserName)).addPathPatterns("/**")
-				.excludePathPatterns(AUTH_WHITE_LIST);
+		registry.addInterceptor(new GlobalInterceptors(isJwtTokenEnable, getJwtTokenUtil(), jwtUserName))
+				.addPathPatterns("/**").excludePathPatterns(AUTH_WHITE_LIST);
 	}
 
 	@Override

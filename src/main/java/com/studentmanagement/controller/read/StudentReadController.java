@@ -29,40 +29,40 @@ import org.springframework.web.bind.annotation.RestController;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class StudentReadController {
 
-    StudentService studentService;
+	StudentService studentService;
 
-    /**
-     * get all students
-     *
-     * @return
-     */
-    @Tag(name = "Get All students")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
-    		@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
-    		@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
-    @Operation(summary = "get all students", description = "Getting all students")
-    @GetMapping
-    public ResponseEntity<Response> getAllStudents() {
-        log.info("retrieve all student");
-        return new ResponseEntity<>(studentService.findAll(), HttpStatus.OK);
-    }
+	/**
+	 * get all students
+	 *
+	 * @return
+	 */
+	@Tag(name = "Get All students")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
+			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
+	@Operation(summary = "get all students", description = "Getting all students")
+	@GetMapping
+	public ResponseEntity<Response> getAllStudents() {
+		log.info("retrieve all student");
+		return new ResponseEntity<>(studentService.findAll(), HttpStatus.OK);
+	}
 
-    /**
-     * get student
-     *
-     * @param studentId
-     * @return
-     */
-    @Tag(name = "Get student")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
-    		@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
-    		@ApiResponse(responseCode = "404", description = "Returned when the provided Student id is not found."),
-    		@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
-    @Operation(summary = "get student", description = "Get student")
-    @GetMapping("{studentId}")
-    public ResponseEntity<Response> getBook(@PathVariable Long studentId) {
-        log.info("retreive student");
-        return new ResponseEntity<>(studentService.findStudent(studentId), HttpStatus.OK);
-    }
+	/**
+	 * get student
+	 *
+	 * @param studentId
+	 * @return
+	 */
+	@Tag(name = "Get student")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
+			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+			@ApiResponse(responseCode = "404", description = "Returned when the provided Student id is not found."),
+			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
+	@Operation(summary = "get student", description = "Get student")
+	@GetMapping("{studentId}")
+	public ResponseEntity<Response> getBook(@PathVariable Long studentId) {
+		log.info("retreive student");
+		return new ResponseEntity<>(studentService.findStudent(studentId), HttpStatus.OK);
+	}
 
 }

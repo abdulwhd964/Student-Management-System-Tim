@@ -7,6 +7,7 @@ package com.studentmanagement.service;
 
 import org.springframework.stereotype.Service;
 
+import com.studentmanagement.constant.AppConstant;
 import com.studentmanagement.dto.UserDTO;
 import com.studentmanagement.exception.BadCredentialsException;
 import com.studentmanagement.exception.UsernameNotFoundException;
@@ -21,7 +22,7 @@ import lombok.experimental.FieldDefaults;
 
 @AllArgsConstructor
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserService {
 
 	UserRepository userRepository;
@@ -31,18 +32,17 @@ public class UserService {
 	public Response validate(final UserDTO userDTO) {
 		validateUsername(userDTO.getUserName());
 		validatePassword(userDTO.getPassword());
-		return new ResponseBuilder().message("login_success").data(jwtTokenUtil.generateToken(userDTO.getUserName()))
+		return new ResponseBuilder().message(AppConstant.LOGIN_SUCCESS).data(jwtTokenUtil.generateToken(userDTO.getUserName()))
 				.build();
 	}
 
 	private void validateUsername(final String userName) {
-		userRepository.findByUserName(userName).orElseThrow(
-				() -> new UsernameNotFoundException(String.format("username: %s. not found", userName)));
+		userRepository.findByUserName(userName)
+				.orElseThrow(() -> new UsernameNotFoundException(String.format("username: %s. not found", userName)));
 	}
 
 	private void validatePassword(final String password) {
-		userRepository.findByPassword(password)
-				.orElseThrow(() -> new BadCredentialsException("Invalid Password"));
+		userRepository.findByPassword(password).orElseThrow(() -> new BadCredentialsException("Invalid Password"));
 	}
-	
+
 }

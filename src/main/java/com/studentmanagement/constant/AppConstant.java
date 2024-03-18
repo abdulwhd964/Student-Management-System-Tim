@@ -6,12 +6,14 @@
 package com.studentmanagement.constant;
 
 public class AppConstant {
-    public static final String API="/api";
+	public static final String API = "/api";
 
-    public static final String SUCCESS="Success";
+	public static final String SUCCESS = "Success";
+	
+	public static final String LOGIN_SUCCESS = "login Success";
 
-    private AppConstant(){
+	private AppConstant() {
 
-    }
+	}
 
 }

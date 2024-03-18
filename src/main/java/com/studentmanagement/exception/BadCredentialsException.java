@@ -6,13 +6,13 @@
 package com.studentmanagement.exception;
 
 public class BadCredentialsException extends RuntimeException {
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5770135955393957511L;
 
 	public BadCredentialsException(String message) {
-        super(message);
-    }
+		super(message);
+	}
 
 }

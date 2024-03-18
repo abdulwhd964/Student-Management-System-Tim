@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Aspect
 @Slf4j
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class LoggingAspect {
 
 	static long START_TIME = System.currentTimeMillis();

@@ -17,6 +17,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = DateOfBirthValidator.class)
 public @interface ValidDateOfBirth {
+	
 	String message() default "Date of birth should not be less than 15 years ago";
 
 	Class<?>[] groups() default {};

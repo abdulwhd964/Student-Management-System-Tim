@@ -10,14 +10,14 @@ import com.studentmanagement.presentation.Response;
 
 public interface StudentService {
 
-    Response findAll();
+	Response findAll();
 
-    Response findStudent(long studentId);
+	Response findStudent(long studentId);
 
-    Response save(StudentDTO studentDTO);
+	Response save(StudentDTO studentDTO);
 
-    Response update(long studentId,StudentDTO studentDTO);
+	Response update(long studentId, StudentDTO studentDTO);
 
-    void delete(long studentId);
+	void delete(long studentId);
 
 }

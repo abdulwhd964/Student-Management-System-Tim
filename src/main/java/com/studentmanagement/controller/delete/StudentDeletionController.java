@@ -25,29 +25,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/students")
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class StudentDeletionController {
-    
+
 	StudentService studentService;
 
-    /**
-     * delete student
-     *
-     * @param studentId
-     * @return
-     */
-    @Tag(name = "Delete student")
-    @Operation(summary = "delete student", description = "Student must exist")
-    @ApiResponses(value = {@ApiResponse(responseCode = "204", description = "No content. The student was successfully deleted."),
-    		@ApiResponse(responseCode = "404", description = "Returned when the provided Student id is not found."),
-            @ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
-            @ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
-    @DeleteMapping("{studentId}")
-    public ResponseEntity<Response> deleteStudent(@PathVariable long studentId) {
-        log.info("deleting student");
-        studentService.delete(studentId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+	/**
+	 * delete student
+	 *
+	 * @param studentId
+	 * @return
+	 */
+	@Tag(name = "Delete student")
+	@Operation(summary = "delete student", description = "Student must exist")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "204", description = "No content. The student was successfully deleted."),
+			@ApiResponse(responseCode = "404", description = "Returned when the provided Student id is not found."),
+			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
+	@DeleteMapping("{studentId}")
+	public ResponseEntity<Response> deleteStudent(@PathVariable long studentId) {
+		log.info("deleting student");
+		studentService.delete(studentId);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 
 }

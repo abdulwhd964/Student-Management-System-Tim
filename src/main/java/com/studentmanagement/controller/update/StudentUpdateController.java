@@ -27,25 +27,25 @@ import org.springframework.web.bind.annotation.*;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class StudentUpdateController {
-    StudentService studentService;
+	StudentService studentService;
 
-    /**
-     * update student
-     *
-     * @param studentId
-     * @param studentDTO
-     * @return
-     */
-    @Tag(name = "Update student")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
-            @ApiResponse(responseCode = "400", description = "Returned when there are validation errors in the submitted form data."),
-            @ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
-            @ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
-    @Operation(summary = "update student", description = "update student")
-    @PutMapping("{studentId}")
-    public ResponseEntity<Response> updateStudent(@PathVariable long studentId,
-                                                  @Valid @RequestBody StudentDTO studentDTO) {
-        log.info("updating student");
-        return new ResponseEntity<>(studentService.update(studentId, studentDTO), HttpStatus.OK);
-    }
+	/**
+	 * update student
+	 *
+	 * @param studentId
+	 * @param studentDTO
+	 * @return
+	 */
+	@Tag(name = "Update student")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
+			@ApiResponse(responseCode = "400", description = "Returned when there are validation errors in the submitted form data."),
+			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
+	@Operation(summary = "update student", description = "update student")
+	@PutMapping("{studentId}")
+	public ResponseEntity<Response> updateStudent(@PathVariable long studentId,
+			@Valid @RequestBody StudentDTO studentDTO) {
+		log.info("updating student");
+		return new ResponseEntity<>(studentService.update(studentId, studentDTO), HttpStatus.OK);
+	}
 }

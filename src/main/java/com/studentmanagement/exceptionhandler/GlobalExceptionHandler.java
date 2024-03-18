@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestControllerAdvice
 @Slf4j
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class GlobalExceptionHandler {
 
 	static String SPACE = " ";
@@ -40,13 +40,13 @@ public class GlobalExceptionHandler {
 		log.error("error occurred: {}", exception.getMessage(), exception);
 		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.NOT_FOUND);
 	}
-	
+
 	@ExceptionHandler(value = UsernameNotFoundException.class)
 	ResponseEntity<ErrorResponse> handleUsernameNotFoundException(final UsernameNotFoundException exception) {
 		log.error("error occurred: {}", exception.getMessage(), exception);
 		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.NOT_FOUND);
 	}
-	
+
 	@ExceptionHandler(value = JwtException.class)
 	ResponseEntity<ErrorResponse> handleJwtException(final JwtException exception) {
 		log.error("An error occurred: {}", exception.getMessage(), exception);
@@ -54,8 +54,7 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(value = BadCredentialsException.class)
-	ResponseEntity<ErrorResponse> handleBadCredentialsException(
-			final BadCredentialsException exception) {
+	ResponseEntity<ErrorResponse> handleBadCredentialsException(final BadCredentialsException exception) {
 		log.error("An error occurred: {}", exception.getMessage(), exception);
 		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.UNAUTHORIZED);
 	}
@@ -88,9 +87,10 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = RuntimeException.class)
 	ResponseEntity<ErrorResponse> handleRuntimeException(final RuntimeException exception) {
 		log.error("An unexpected error occurred: {}", exception.getMessage(), exception);
-		if(exception instanceof HttpMessageNotReadableException){
-			if(StringUtils.containsAnyIgnoreCase(exception.getMessage(),"localDate")){
-				return new ResponseEntity<>(new ErrorResponse("Date format must be yyyy-MM-dd"), HttpStatus.BAD_REQUEST);
+		if (exception instanceof HttpMessageNotReadableException) {
+			if (StringUtils.containsAnyIgnoreCase(exception.getMessage(), "localDate")) {
+				return new ResponseEntity<>(new ErrorResponse("Date format must be yyyy-MM-dd"),
+						HttpStatus.BAD_REQUEST);
 			}
 		}
 		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
