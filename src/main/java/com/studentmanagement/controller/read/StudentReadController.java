@@ -60,7 +60,7 @@ public class StudentReadController {
 			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
 	@Operation(summary = "get student", description = "Get student")
 	@GetMapping("{studentId}")
-	public ResponseEntity<Response> getBook(@PathVariable Long studentId) {
+	public ResponseEntity<Response> getStudent(@PathVariable Long studentId) {
 		log.info("retreive student");
 		return new ResponseEntity<>(studentService.findStudent(studentId), HttpStatus.OK);
 	}
