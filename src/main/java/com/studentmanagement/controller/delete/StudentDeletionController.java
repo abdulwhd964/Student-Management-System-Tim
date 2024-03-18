@@ -42,7 +42,7 @@ public class StudentDeletionController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "204", description = "No content. The student was successfully deleted."),
 			@ApiResponse(responseCode = "404", description = "Returned when the provided Student id is not found."),
-			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, either no JWT token is provided or the provided JWT token has invalid."),
 			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
 	@DeleteMapping("{studentId}")
 	public ResponseEntity<Response> deleteStudent(@PathVariable long studentId) {

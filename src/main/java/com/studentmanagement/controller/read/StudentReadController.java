@@ -38,7 +38,7 @@ public class StudentReadController {
 	 */
 	@Tag(name = "Get All students")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
-			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, either no JWT token is provided or the provided JWT token has invalid."),
 			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
 	@Operation(summary = "get all students", description = "Getting all students")
 	@GetMapping

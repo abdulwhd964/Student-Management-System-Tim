@@ -45,7 +45,7 @@ public class StudentCreationController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "201", description = "Created. The student was successfully created."),
 			@ApiResponse(responseCode = "400", description = "Returned when there are validation errors in the submitted form data."),
-			@ApiResponse(responseCode = "401", description = "Returned when no JWT token is provided or the provided JWT token has invalid."),
+			@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, either no JWT token is provided or the provided JWT token has invalid."),
 			@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.") })
 	@Operation(summary = "create student")
 	@PostMapping
