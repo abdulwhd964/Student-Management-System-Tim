@@ -4,15 +4,8 @@
  */
 package com.studentmanagement.exceptionhandler;
 
-import com.studentmanagement.exception.StudentNotFoundException;
-import com.studentmanagement.exception.UserAndPasswordNotFoundException;
-import com.studentmanagement.exception.UserAuthenticationException;
-import com.studentmanagement.presentation.ErrorResponse;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.ConstraintViolationException;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
+import java.util.StringJoiner;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -23,7 +16,17 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.StringJoiner;
+import com.studentmanagement.exception.StudentNotFoundException;
+import com.studentmanagement.exception.BadCredentialsException;
+import com.studentmanagement.exception.JwtException;
+import com.studentmanagement.exception.UsernameNotFoundException;
+import com.studentmanagement.presentation.ErrorResponse;
+
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 
 @RestControllerAdvice
 @Slf4j
@@ -37,18 +40,24 @@ public class GlobalExceptionHandler {
 		log.error("error occurred: {}", exception.getMessage(), exception);
 		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.NOT_FOUND);
 	}
-
-	@ExceptionHandler(value = UserAuthenticationException.class)
-	ResponseEntity<ErrorResponse> handleUserAuthenticationException(final UserAuthenticationException exception) {
+	
+	@ExceptionHandler(value = UsernameNotFoundException.class)
+	ResponseEntity<ErrorResponse> handleUsernameNotFoundException(final UsernameNotFoundException exception) {
+		log.error("error occurred: {}", exception.getMessage(), exception);
+		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(value = JwtException.class)
+	ResponseEntity<ErrorResponse> handleJwtException(final JwtException exception) {
 		log.error("An error occurred: {}", exception.getMessage(), exception);
 		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.UNAUTHORIZED);
 	}
 
-	@ExceptionHandler(value = UserAndPasswordNotFoundException.class)
-	ResponseEntity<ErrorResponse> handleUserAndPasswordNotFoundException(
-			final UserAndPasswordNotFoundException exception) {
+	@ExceptionHandler(value = BadCredentialsException.class)
+	ResponseEntity<ErrorResponse> handleBadCredentialsException(
+			final BadCredentialsException exception) {
 		log.error("An error occurred: {}", exception.getMessage(), exception);
-		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.UNAUTHORIZED);
 	}
 
 	@ExceptionHandler(value = DataIntegrityViolationException.class)

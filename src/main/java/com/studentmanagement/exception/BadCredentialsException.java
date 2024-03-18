@@ -5,13 +5,13 @@
  */
 package com.studentmanagement.exception;
 
-public class UserAndPasswordNotFoundException extends RuntimeException {
+public class BadCredentialsException extends RuntimeException {
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 5770135955393957511L;
 
-	public UserAndPasswordNotFoundException(String message) {
+	public BadCredentialsException(String message) {
         super(message);
     }
 

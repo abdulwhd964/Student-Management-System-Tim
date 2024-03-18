@@ -39,10 +39,10 @@ public class StudentDeletionController {
      */
     @Tag(name = "Delete student")
     @Operation(summary = "delete student", description = "Student must exist")
-    @ApiResponses(value = {@ApiResponse(responseCode = "204", description = "delete student by Id"),
-            @ApiResponse(responseCode = "404", description = "Student not found"),
-            @ApiResponse(responseCode = "401", description = "If JWTEnabled and No JWTToken, JWT Token Expired Error"),
-            @ApiResponse(responseCode = "500", description = "Server Error")})
+    @ApiResponses(value = {@ApiResponse(responseCode = "204", description = "No content. The student was successfully deleted."),
+    		@ApiResponse(responseCode = "404", description = "Returned when the provided Student id is not found."),
+            @ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+            @ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
     @DeleteMapping("{studentId}")
     public ResponseEntity<Response> deleteStudent(@PathVariable long studentId) {
         log.info("deleting student");

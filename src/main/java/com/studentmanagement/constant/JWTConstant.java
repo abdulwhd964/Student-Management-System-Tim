@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum JWTConstant {
-	TOKEN_VALID("token is valid"), TOKEN_INVALID("token is invalid"), TOKEN_EXPIRED("token is expired");
+	JWT_TOKEN_VALID("JWT token is valid"), JWT_TOKEN_INVALID("JWT token is invalid"), JWT_TOKEN_EXPIRED("JWT token is expired"), JWT_TOKEN_MISSING_OR_EMPTY("JWT token is missing or empty");
 
 	private String message;
 

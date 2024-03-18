@@ -57,15 +57,15 @@ public class JwtTokenUtil {
         try {
             Jws<Claims> claims = Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
             if (ObjectUtils.isEmpty(claims))
-                return JWTConstant.TOKEN_INVALID.getMessage();
+                return JWTConstant.JWT_TOKEN_INVALID.getMessage();
         } catch (ExpiredJwtException e) {
             log.error("ExpiredJwtException Occurred : ", e.getMessage());
-            return JWTConstant.TOKEN_EXPIRED.getMessage();
+            return JWTConstant.JWT_TOKEN_EXPIRED.getMessage();
         } catch (Exception e) {
             log.error("Exception Occurred : ", e.getMessage());
-            return JWTConstant.TOKEN_EXPIRED.getMessage();
+            return JWTConstant.JWT_TOKEN_EXPIRED.getMessage();
         }
-        return JWTConstant.TOKEN_VALID.getMessage();
+        return JWTConstant.JWT_TOKEN_VALID.getMessage();
     }
 
 }

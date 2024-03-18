@@ -5,14 +5,14 @@
  */
 package com.studentmanagement.exception;
 
-public class UserAuthenticationException extends RuntimeException {
+public class JwtException extends RuntimeException {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = -479776770542574067L;
 
-	public UserAuthenticationException(String message) {
+	public JwtException(String message) {
         super(message);
     }
 }

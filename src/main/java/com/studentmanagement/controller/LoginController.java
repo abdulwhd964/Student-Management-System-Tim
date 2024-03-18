@@ -31,9 +31,11 @@ public class LoginController {
     UserService userService;
 
     @Tag(name = "Login")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Success"),
-            @ApiResponse(responseCode = "400", description = "Validation Error"),
-            @ApiResponse(responseCode = "500", description = "Server Error")})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
+            @ApiResponse(responseCode = "400", description = "Returned when there are validation errors in the submitted form data."),
+            @ApiResponse(responseCode = "404", description = "Returned when the provided username is not found."),
+            @ApiResponse(responseCode = "401",  description = "Returned when the provided password is incorrect."),
+            @ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
     @Operation(summary = "login to access the resource")
     @PostMapping("/login")
     public ResponseEntity<Response> login(@Valid @RequestBody UserDTO userDTO) {

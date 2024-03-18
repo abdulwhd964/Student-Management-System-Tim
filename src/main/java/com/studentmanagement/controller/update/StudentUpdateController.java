@@ -37,10 +37,10 @@ public class StudentUpdateController {
      * @return
      */
     @Tag(name = "Update student")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Success"),
-            @ApiResponse(responseCode = "400", description = "Validation Error"),
-            @ApiResponse(responseCode = "401", description = "If JWTEnabled and No JWTToken, JWT Token Expired Error"),
-            @ApiResponse(responseCode = "500", description = "Server Error")})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
+            @ApiResponse(responseCode = "400", description = "Returned when there are validation errors in the submitted form data."),
+            @ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+            @ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
     @Operation(summary = "update student", description = "update student")
     @PutMapping("{studentId}")
     public ResponseEntity<Response> updateStudent(@PathVariable long studentId,

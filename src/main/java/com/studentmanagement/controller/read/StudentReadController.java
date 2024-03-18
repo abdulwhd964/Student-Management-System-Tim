@@ -37,9 +37,9 @@ public class StudentReadController {
      * @return
      */
     @Tag(name = "Get All students")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Success"),
-            @ApiResponse(responseCode = "401", description = "If JWTEnabled and No JWTToken, JWT Token Expired Error"),
-            @ApiResponse(responseCode = "500", description = "Server Error")})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
+    		@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+    		@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
     @Operation(summary = "get all students", description = "Getting all students")
     @GetMapping
     public ResponseEntity<Response> getAllStudents() {
@@ -54,9 +54,10 @@ public class StudentReadController {
      * @return
      */
     @Tag(name = "Get student")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Success"),
-            @ApiResponse(responseCode = "404", description = "Student not found"),
-            @ApiResponse(responseCode = "500", description = "Server Error")})
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "OK. The operation was successful."),
+    		@ApiResponse(responseCode = "401", description = "Returned when JWT authentication is enabled, and either no JWT token is provided or the provided JWT token has invalid."),
+    		@ApiResponse(responseCode = "404", description = "Returned when the provided Student id is not found."),
+    		@ApiResponse(responseCode = "500", description = "Returned when an unexpected internal server error occurs.")})
     @Operation(summary = "get student", description = "Get student")
     @GetMapping("{studentId}")
     public ResponseEntity<Response> getBook(@PathVariable Long studentId) {

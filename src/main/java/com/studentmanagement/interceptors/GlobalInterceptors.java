@@ -6,7 +6,7 @@
 package com.studentmanagement.interceptors;
 
 import com.studentmanagement.constant.JWTConstant;
-import com.studentmanagement.exception.UserAuthenticationException;
+import com.studentmanagement.exception.JwtException;
 import com.studentmanagement.util.jwt.JwtTokenUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -41,19 +41,19 @@ public class GlobalInterceptors implements HandlerInterceptor {
         if (this.tokenEnabled) {
             String jwtToken = request.getHeader("Authorization");
             if (ObjectUtils.isEmpty(jwtToken))
-                throw new UserAuthenticationException("Access Denied");
+            	throw new JwtException(JWTConstant.JWT_TOKEN_MISSING_OR_EMPTY.getMessage());
 
             String jwtTokenResponse = jwtTokenUtil.validateToken(jwtToken.substring(7));
 
-            if (jwtTokenResponse.equalsIgnoreCase(JWTConstant.TOKEN_EXPIRED.getMessage())) {
+            if (jwtTokenResponse.equalsIgnoreCase(JWTConstant.JWT_TOKEN_EXPIRED.getMessage())) {
                 log.info(" regenerating the token ");
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 // hardcode values since we have loaded this user
                 String newJwtToken = jwtTokenUtil.generateToken(userName);
                 response.addHeader("Authorization", newJwtToken);
-            } else if (jwtTokenResponse.equalsIgnoreCase(JWTConstant.TOKEN_INVALID.getMessage())) {
-                throw new UserAuthenticationException(JWTConstant.TOKEN_EXPIRED.getMessage());
+            } else if (jwtTokenResponse.equalsIgnoreCase(JWTConstant.JWT_TOKEN_INVALID.getMessage())) {
+                throw new JwtException(JWTConstant.JWT_TOKEN_INVALID.getMessage());
             }
             return true;
         }

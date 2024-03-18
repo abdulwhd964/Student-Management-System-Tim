@@ -5,14 +5,15 @@
  */
 package com.studentmanagement.service;
 
-import com.studentmanagement.util.jwt.JwtTokenUtil;
 import org.springframework.stereotype.Service;
 
 import com.studentmanagement.dto.UserDTO;
-import com.studentmanagement.exception.UserAndPasswordNotFoundException;
+import com.studentmanagement.exception.BadCredentialsException;
+import com.studentmanagement.exception.UsernameNotFoundException;
 import com.studentmanagement.presentation.Response;
 import com.studentmanagement.presentation.ResponseBuilder;
 import com.studentmanagement.repo.UserRepository;
+import com.studentmanagement.util.jwt.JwtTokenUtil;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -36,11 +37,12 @@ public class UserService {
 
 	private void validateUsername(final String userName) {
 		userRepository.findByUserName(userName).orElseThrow(
-				() -> new UserAndPasswordNotFoundException(String.format("username: %s. not found", userName)));
+				() -> new UsernameNotFoundException(String.format("username: %s. not found", userName)));
 	}
 
 	private void validatePassword(final String password) {
 		userRepository.findByPassword(password)
-				.orElseThrow(() -> new UserAndPasswordNotFoundException("Invalid Password"));
+				.orElseThrow(() -> new BadCredentialsException("Invalid Password"));
 	}
+	
 }
