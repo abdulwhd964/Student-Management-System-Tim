@@ -35,6 +35,7 @@ import com.studentmanagement.util.jwt.*;
 @EnableCaching
 @Slf4j
 public class Appconfiguration implements WebMvcConfigurer {
+	
 
 	private static final String[] AUTH_WHITE_LIST = { "/h2-console/**", "/swagger-ui/index.html/**", "/login",
 			"/v3/api-docs/**", "/swagger-ui/**", "/webjars/**", "/login", "/swagger-resources/**" };
