@@ -41,6 +41,7 @@ This repository contains the source code for Student Management System. where st
 ### 7. Integrated with React
 
 - Integrated with React with the localhost:3000 and allow the react to communicate with springboot application
+- FrontEnd Code is also deployed with render you can access at https://student-management-tim-ui.onrender.com
 
 ### 8. Caching
 
@@ -84,7 +85,7 @@ and expressive code when creating response objects, making it easier to understa
     - docker run -p 8080:8080 student-management-tim .
 
 ### 16. Render Deployment
-- This application has been deployed with Render using Docker Image, you can access this application via https://student-management-system-tim-2-dw1u.onrender.com/api/swagger-ui/index.html
+- This application has been deployed with Render using Docker Image, you can access this application via https://student-management-system-tim.onrender.com/api/swagger-ui/index.html
 
 ## Setup
 
